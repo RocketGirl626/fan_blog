@@ -1,0 +1,30 @@
+<div class='container main-box'>
+  <div class='row'>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li>
+          <div class='col-md-2'>
+            posted by:&nbsp;&nbsp;<%= comment.user %>&nbsp;&nbsp;
+          </div>
+          <div class='col-md-2'>
+            comment:&nbsp;&nbsp;<%= comment.text %>&nbsp;&nbsp;
+          </div>
+          <div class='col-md-2'>
+            this rating:&nbsp;&nbsp;<%= comment.rating %>&nbsp;&nbsp;
+          </div>
+          <div class='col-md-2'>
+            average rating:&nbsp;&nbsp;<%= Comment.average(:rating) %>&nbsp;&nbsp;
+          </div>
+          <div class='col-md-2'>
+            <button class="edit-btn"><%= link_to "Edit Comment", edit_post_comment_path(@post, comment) %></button>
+          </div>
+          <div class='col-md-2'>
+            <button><%= link_to "Delete Comment", post_comment_path(@post, comment),
+                      :data => {:confirm => "Confirm?",
+                      :method => "delete"} %></button>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

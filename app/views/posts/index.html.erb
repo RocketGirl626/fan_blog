@@ -1,6 +1,7 @@
 <% content_for :title, "Spicy Stuff | Posts" %>
 
 <h1>Index Posts</h1>
+<% @posts = Post.order(:title) %>
 
 <% if @posts.any? %>
    <ul>
